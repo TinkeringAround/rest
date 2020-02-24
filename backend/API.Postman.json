@@ -1,0 +1,100 @@
+{
+	"info": {
+		"_postman_id": "461c93b9-10a8-4849-99b3-414873804e2e",
+		"name": "Server-Checker",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Servers",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/servers",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"servers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{id}",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/servers/82c53022-75e5-400c-a0bc-2fb0b2f98138",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"servers",
+						"82c53022-75e5-400c-a0bc-2fb0b2f98138"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Server",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"url\": \"www.foundrymakes.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/servers",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"servers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{id}",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/servers/080b597f-a72a-49d0-b35e-c444c2e10191",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"servers",
+						"080b597f-a72a-49d0-b35e-c444c2e10191"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

@@ -1,0 +1,43 @@
+{
+  "name": "monitoring-app",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "grommet": "^2.9.0",
+    "moment": "^2.24.0",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "react-portal": "^4.2.0",
+    "react-pose": "^4.0.10",
+    "react-scripts": "^3.3.0",
+    "react-spinners-kit": "^1.9.1",
+    "styled-components": "^5.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^13.7.4",
+    "@types/react": "^16.8.23",
+    "@types/react-dom": "^16.8.5",
+    "@types/react-portal": "^4.0.2",
+    "@types/styled-components": "^5.0.0",
+    "typescript": "^3.5.3"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
