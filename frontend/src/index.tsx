@@ -41,7 +41,7 @@ const App: FC = () => {
 
     api
       .get('')
-      .then(response => setServers([])) //setServers(response.data))
+      .then(response => setServers(response.data))
       .catch(error => console.log(error))
       .finally(() => {
         if (!silent) setLoading(false)

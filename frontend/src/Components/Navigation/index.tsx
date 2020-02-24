@@ -43,7 +43,7 @@ const Navigation: FC = () => {
       {/* Overlay */}
       <Overlay open={open} closeDialog={() => setOpen(false)}>
         {/* Heading */}
-        <Box width="100%" margin={{ bottom: '1rem' }}>
+        <Box width="100%" margin={{ bottom: '2rem' }}>
           <Heading
             level="3"
             size="4rem"
@@ -58,9 +58,8 @@ const Navigation: FC = () => {
         {/* Content */}
         <Box
           width="100%"
-          height="10rem"
           background={colors['light']}
-          pad="2rem"
+          pad="2.5rem 2rem"
           justify="center"
           style={{ borderRadius: '10px' }}
         >

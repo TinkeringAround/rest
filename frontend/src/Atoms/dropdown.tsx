@@ -51,7 +51,7 @@ const Dropdown: FC<Props> = ({
 }) => (
   <Box margin={margin} width={width} style={style}>
     {label && (
-      <Text size="1rem" weight="bold" color={colors['medium']} margin={{ bottom: '0.25rem' }}>
+      <Text size="1rem" weight="bold" color={colors['medium']} margin={{ bottom: '0.75rem' }}>
         {label}
       </Text>
     )}
