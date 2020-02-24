@@ -6,3 +6,14 @@ export type TStyled = {
   active?: boolean
   fontSize?: string
 }
+
+// ===============================================
+export type TServer = {
+  id: string
+  url: string
+  status: boolean
+  lastUpdated: number
+}
+
+// ===============================================
+export type TRefreshInterval = 'Every Minute' | 'Every 5 Minutes' | 'Every 10 Minutes'

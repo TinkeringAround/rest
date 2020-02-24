@@ -1,12 +1,18 @@
-# TODO
+# Monitoring App
 
 ## Features
 
+- Table bauen
+- Fetch Servers
+- Reload Function
+- Settings Reload Interval
+- Add, Delte Server
 - Timestamp überprüfen
 
 ## Sonstiges
 
-- Testing
+- Backend Testing
+- Frontend Testing
 
 # Time
 

@@ -1,16 +1,29 @@
-import React, { Fragment, useState, FC } from 'react'
-import { Box, ResponsiveContext } from 'grommet'
+import React, { Fragment, useState, FC, useContext } from 'react'
+import { Box, ResponsiveContext, Heading } from 'grommet'
+
+// Types
+import { TRefreshInterval } from '../../Types'
+
+// Contexts
+import { AppContext } from '../../Contexts'
 
 // Atoms
 import IconButton from '../../Atoms/iconButton'
+import Dropdown from '../../Atoms/dropdown'
 
 // Components
 import Overlay from '../Overlay'
+import { colors } from '../../Styles'
+
+// Consts
+const OPTIONS: Array<TRefreshInterval> = ['Every Minute', 'Every 5 Minutes', 'Every 10 Minutes']
+const TIMES: Array<number> = [60000, 300000, 600000]
 
 // ===============================================
 const Navigation: FC = () => {
+  const { reload, setRefreshInterval } = useContext(AppContext)
   const [open, setOpen] = useState<boolean>(false)
-  const reload = (status: boolean) => {}
+  const [refreshInterval, setInterval] = useState<TRefreshInterval>('Every Minute')
 
   return (
     <ResponsiveContext.Consumer>
@@ -36,25 +49,37 @@ const Navigation: FC = () => {
             {/* Dialog */}
             <Overlay open={open} closeDialog={() => setOpen(false)}>
               {/* Heading */}
-              <Box width="100%" direction="row" align="baseline" margin={{ bottom: '1rem' }}>
-                {/* {tabs.map((tab: TTab) => (
-                  <Heading
-                    key={'Tab-' + tab}
-                    level="3"
-                    size={
-                      isMobile ? (tab === mode ? '2.5rem' : '1rem') : tab === mode ? '3rem' : '1rem'
-                    }
-                    color="medium"
-                    margin="0 .75rem 0 0"
-                    style={{ cursor: 'pointer' }}
-                    onClick={() => setMode(tab)}
-                  >
-                    {tab}
-                  </Heading>
-                ))} */}
+              <Box width="100%" margin={{ bottom: '1rem' }}>
+                <Heading
+                  level="3"
+                  size={isMobile ? '1.5rem' : '4rem'}
+                  color="medium"
+                  margin="0 .75rem 0 0"
+                >
+                  Settings
+                </Heading>
               </Box>
 
               {/* Content */}
+              <Box
+                width="100%"
+                height="10rem"
+                background={colors['light']}
+                pad="2rem"
+                justify="center"
+                style={{ borderRadius: '10px' }}
+              >
+                <Dropdown
+                  options={OPTIONS}
+                  value={refreshInterval}
+                  select={(selection: string) => {
+                    setInterval(selection as TRefreshInterval)
+                    const index = OPTIONS.indexOf(selection as TRefreshInterval)
+                    setRefreshInterval(TIMES[index])
+                  }}
+                  label="Refresh Interval"
+                />
+              </Box>
             </Overlay>
           </Fragment>
         )

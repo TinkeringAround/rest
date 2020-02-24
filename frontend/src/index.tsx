@@ -24,6 +24,7 @@ const App: FC = () => (
     </Layout>
   </Grommet>
 )
-//----------------------------------------------------------
+
+// ===============================================
 ReactDOM.render(<App />, document.getElementById('root'))
 serviceWorker.register()
