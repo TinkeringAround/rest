@@ -4,7 +4,6 @@
 
 - Table bauen
 - Add, Delete Server
-- Timestamp überprüfen
 
 ## Sonstiges
 

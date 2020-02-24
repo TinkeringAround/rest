@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { FC } from 'react'
 import { Box } from 'grommet'
 import styled from 'styled-components'
 
 // Types
-import { TIconType } from '../Types'
+import { TIconType, TIconColor } from '../Types'
 
 // Atoms
 import Icon from './icon'
@@ -20,26 +20,32 @@ const SIcon = styled(Box)`
 // ===============================================
 interface Props {
   wrapper?: string
+  wrapperBackground?: string
+
   icon?: string
   iconType: TIconType | null
+  iconColor?: TIconColor
+
   margin?: string
   onClick?: any
-  active?: boolean
   tooltip?: string | null
 }
 
 // ===============================================
-const IconButton: React.FC<Props> = ({
+const IconButton: FC<Props> = ({
   wrapper = '3rem',
+  wrapperBackground = 'white',
+
   icon = '50%',
   iconType,
+  iconColor = 'medium',
+
   margin = '0 0 0 .5rem',
   onClick = null,
-  active = false,
   tooltip = null
 }) => (
   <SIcon
-    background="white"
+    background={wrapperBackground}
     justify="center"
     align="center"
     width={wrapper}
@@ -48,7 +54,7 @@ const IconButton: React.FC<Props> = ({
     style={{ margin: margin }}
     data-tip={tooltip}
   >
-    <Icon type={iconType} active={active} size={icon} />
+    <Icon type={iconType} size={icon} color={iconColor} />
   </SIcon>
 )
 export default IconButton

@@ -1,31 +1,11 @@
 import React, { FC, CSSProperties } from 'react'
-import styled from 'styled-components'
 import { Box, Text } from 'grommet'
 
 // Styles
 import { colors } from '../Styles'
 
 // Atoms
-const SSelect = styled.select`
-  padding: 0.75rem;
-
-  background: ${colors['white']};
-  border: none;
-  border-radius: 5px;
-
-  appearance: none;
-  outline: none;
-
-  font-family: inherit;
-  font-size: 1.25rem;
-  font-weight: bold;
-  text-align-last: center;
-  color: ${colors['medium']};
-
-  ::-ms-expand {
-    display: none;
-  }
-`
+import { SSelect } from './styled'
 
 // ==========================================================
 interface Props {
@@ -51,7 +31,7 @@ const Dropdown: FC<Props> = ({
 }) => (
   <Box margin={margin} width={width} style={style}>
     {label && (
-      <Text size="1rem" weight="bold" color={colors['medium']} margin={{ bottom: '0.75rem' }}>
+      <Text size="1.5rem" weight="bold" color={colors['medium']} margin={{ bottom: '0.75rem' }}>
         {label}
       </Text>
     )}

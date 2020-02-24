@@ -1,11 +1,5 @@
-export type TIconType = 'settings' | 'reload' | 'plus' | 'minus'
-
-// ===============================================
-export type TStyled = {
-  margin?: string
-  active?: boolean
-  fontSize?: string
-}
+export type TIconType = 'settings' | 'reload' | 'plus' | 'trash'
+export type TIconColor = 'blue' | 'medium'
 
 // ===============================================
 export type TServer = {

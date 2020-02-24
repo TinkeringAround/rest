@@ -1,68 +1,70 @@
 import React, { FC } from 'react'
-import styled from 'styled-components'
 
 // Styles
-import { colors } from '../Styles'
+import { colors, TColors } from '../Styles'
 
-// Utility
-import { hexToRGBA } from '../Utility'
-
-// ===============================================
-const SButton = styled.button`
-  background: ${colors['medium']};
-  border: none;
-  border-radius: 10px;
-
-  color: ${colors['light']};
-  font-size: 1.25rem;
-  font-weight: bold;
-
-  transition: 0.2s all;
-  outline: none;
-  cursor: pointer;
-
-  :hover {
-    color: ${colors['white']};
-    background: ${colors['yellow']};
-    box-shadow: '0px 0px 5px 1px ' + ${hexToRGBA(colors['dark'], '0.2')};
-  }
-`
-
-// ===============================================
+// ==========================================================
 interface Props {
   width?: string
   height?: string
-
-  margin?: string
   padding?: string
+  margin?: string
 
-  onClick?: any
-  props?: any
+  background?: TColors
+  color?: TColors
+  fontSize?: string
+
+  justify?: 'center' | 'start'
+
+  onClick?: () => void
 }
 
-// ===============================================
+// ==========================================================
 const Button: FC<Props> = ({
-  width = '100%',
+  children,
+  width = 'auto',
   height = 'auto',
+  padding = '.5rem',
   margin = '0',
-  padding = '1rem',
-  onClick,
-  props,
-  children
+
+  background = 'blue',
+  color = 'white',
+  fontSize = '.75rem',
+
+  justify = 'center',
+
+  onClick = null
 }) => (
-  <SButton
+  <button
     style={{
       width: width,
       height: height,
-
       margin: margin,
-      padding: padding
+      padding: padding,
+
+      fontSize: fontSize,
+      fontWeight: 'bold',
+      color: colors[color],
+
+      background: colors[background],
+      borderRadius: 5,
+      border: 'none',
+
+      display: 'flex',
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: justify,
+
+      outline: 'none',
+      transition: 'all 0.25s ease',
+      cursor: 'pointer'
     }}
-    onClick={onClick}
-    {...props}
+    onClick={() => {
+      if (onClick) onClick()
+    }}
   >
     {children}
-  </SButton>
+  </button>
 )
 
 export default Button

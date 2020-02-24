@@ -1,15 +1,8 @@
 {
-  "short_name": "HomeKit",
-  "name": "HomeKit",
-  "icons": [
-    {
-      "src": "icons.icns",
-      "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
-    }
-  ],
+  "short_name": "Monitoring-App",
+  "name": "Monitoring-App",
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#F4BC3A",
-  "background_color": "#F4BC3A"
+  "theme_color": "#FFF",
+  "background_color": "#FFF"
 }

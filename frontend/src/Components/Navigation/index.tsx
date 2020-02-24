@@ -41,7 +41,7 @@ const Navigation: FC = () => {
       </Box>
 
       {/* Overlay */}
-      <Overlay open={open} closeDialog={() => setOpen(false)}>
+      <Overlay open={open} close={() => setOpen(false)}>
         {/* Heading */}
         <Box width="100%" margin={{ bottom: '2rem' }}>
           <Heading
@@ -61,7 +61,7 @@ const Navigation: FC = () => {
           background={colors['light']}
           pad="2.5rem 2rem"
           justify="center"
-          style={{ borderRadius: '10px' }}
+          style={{ borderRadius: '5px' }}
         >
           <Dropdown
             label="Refresh Interval"

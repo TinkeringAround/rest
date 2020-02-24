@@ -3,9 +3,7 @@ import posed from 'react-pose'
 
 // Styles
 import { colors } from '../Styles'
-
-// Utility
-import { hexToRGBA } from '../Utility'
+import { Box } from 'grommet'
 
 // ===============================================
 const SBackground = styled.div`
@@ -33,9 +31,9 @@ const SOverlay = styled.div`
   width: 100%;
   height: 90%;
 
-  background: ${hexToRGBA(colors['white'], '1')};
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
+  background: ${colors['white']};
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
 
   display: flex;
   justify-content: center;
@@ -51,4 +49,27 @@ export const AOverlay = posed(SOverlay)({
     opacity: 1,
     bottom: '0%'
   }
+})
+
+// ===================================================================
+const SErrorDialog = styled(Box)`
+  position: fixed;
+  top: 2rem;
+  right: 2rem;
+  z-index: 701;
+
+  width: 400px;
+  height: 200px;
+  padding: 1.5rem;
+
+  background: ${colors['white']};
+  box-shadow: 0px 0px 20px 1px rgba(200, 214, 216, 0.25);
+  border-radius: 5px;
+
+  justify-content: space-between;
+`
+
+export const AErrorDialog = posed(SErrorDialog)({
+  exit: { opacity: 0, top: '0rem', transition: { duration: 500 } },
+  enter: { opacity: 1, top: '2rem', transition: { duration: 500 } }
 })

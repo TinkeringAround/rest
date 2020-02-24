@@ -12,11 +12,11 @@ import { ASimple, AOverlay } from '../../Atoms/animations'
 // ===============================================
 interface Props {
   open: boolean
-  closeDialog: any
+  close: () => void
 }
 
 // ===============================================
-const Overlay: FC<Props> = ({ open, closeDialog, children }) => (
+const Overlay: FC<Props> = ({ open, close, children }) => (
   <Portal>
     <Grommet theme={theme}>
       <PoseGroup preEnterPose="exit">
@@ -27,7 +27,7 @@ const Overlay: FC<Props> = ({ open, closeDialog, children }) => (
             </Box>
           </AOverlay>
         )}
-        {open && <ASimple key="Dialog-Overlay-Background" onClick={closeDialog} />}
+        {open && <ASimple key="Dialog-Overlay-Background" onClick={close} />}
       </PoseGroup>
     </Grommet>
   </Portal>

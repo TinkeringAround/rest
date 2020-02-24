@@ -1,21 +1,18 @@
 import styled from 'styled-components'
 
-// Types
-import { TStyled } from '../Types'
-
 // Styles
 import { colors } from '../Styles'
 
 // ===============================================
 export const SInput = styled.input`
-  width: 100%;
-  height: 50px;
-  margin: 2rem 0;
-  padding: 0px;
+  width: 90%;
+  height: 3rem;
+  margin: 0;
+  padding: 0;
 
   font-family: 'Roboto', sans-serif;
   font-weight: bold;
-  font-size: ${(props: TStyled) => (props.fontSize ? props.fontSize : '3rem')};
+  font-size: 1.25rem;
   text-overflow: ellipsis;
 
   border: none;
@@ -23,28 +20,8 @@ export const SInput = styled.input`
   background-color: transparent;
 
   ::placeholder {
-    color: ${colors['light']};
-  }
-
-  :focus {
-    outline: none;
-  }
-`
-
-// ===============================================
-export const SNameInput = styled.input`
-  font-family: 'Roboto', sans-serif;
-  font-size: ${(props: TStyled) => (props.fontSize ? props.fontSize : '1.5em')};
-  font-weight: bold;
-  border: none;
-  width: 50%;
-  padding: 0px;
-  color: ${colors['medium']};
-  background-color: transparent;
-  text-overflow: ellipsis;
-
-  ::placeholder {
     color: ${colors['medium']};
+    font-size: 1rem;
   }
 
   :focus {
@@ -53,23 +30,23 @@ export const SNameInput = styled.input`
 `
 
 // ===============================================
-export const SColumn = styled.div<TStyled>`
-  width: 100%;
-  height: auto;
-  overflow-y: auto;
+export const SSelect = styled.select`
+  padding: 0.75rem;
 
-  margin: ${({ margin }) => (margin ? margin : '0')};
-`
+  background: ${colors['white']};
+  border: none;
+  border-radius: 5px;
 
-// ===============================================
-export const SRow = styled.div`
-  height: 60px;
-  margin: ${(props: TStyled) => (props.margin ? props.margin : '20px 0px')};
-  padding: 10px 20px;
-  border-radius: 10px;
-  background-color: ${props => (props.active ? colors['yellow'] : colors['light'])};
+  appearance: none;
+  outline: none;
 
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: bold;
+  text-align-last: center;
+  color: ${colors['medium']};
+
+  ::-ms-expand {
+    display: none;
+  }
 `

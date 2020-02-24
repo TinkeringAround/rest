@@ -1,3 +1,5 @@
+export type TColors = 'white' | 'blue' | 'red'
+
 // ===============================================
 export const colors = {
   // Neutral Colors
@@ -10,31 +12,13 @@ export const colors = {
   // Colors
   yellow: '#F4BC3A',
   green: '#06D6A0',
-  red: '#EF476F'
+  red: '#EF476F',
+  blue: '#1B9AAA'
 }
 
 // ===============================================
 export const theme = {
   global: {
-    // Breakpoints
-    breakpoints: {
-      xsmall: {
-        value: 500
-      },
-      small: {
-        value: 950
-      },
-      medium: {
-        value: 1200
-      },
-      middle: {
-        value: 1500
-      },
-      large: {
-        value: 2000
-      }
-    },
-
     // Colors
     colors: colors,
 

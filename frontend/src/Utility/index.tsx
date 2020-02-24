@@ -1,7 +1,3 @@
-import moment from 'moment'
-import 'moment/locale/de'
-
-// ===============================================
 export const hexToRGBA = (hexColor: string, opacity: string) => {
   if (hexColor === '#fff' || hexColor === '#FFF') return 'rgba(255, 255, 255, ' + opacity + ')'
   var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hexColor)
@@ -22,36 +18,11 @@ export const hexToRGBA = (hexColor: string, opacity: string) => {
   return rgba
 }
 
-export const isToday = (timestamp: string) => {
-  if (timestamp === '') return false
-  return moment.unix(parseInt(timestamp)).isSame(moment.now(), 'days')
-}
-
-export const deviceHasLowBattery = (battery: number) => battery < 2400
-
-// ===============================================
-export const deviceLastActiveTime = (timestamp: string) => {
-  if (timestamp === '') return ''
-
-  moment.locale('de')
-  return moment.unix(parseInt(timestamp)).format('HH.mm') + ' Uhr'
-}
-
-export const deviceLastActiveDate = (timestamp: string) => {
-  if (timestamp === '') return ''
-
-  moment.locale('de')
-  return moment.unix(parseInt(timestamp)).format('Do MMMM')
-}
-
-// ===============================================
-export const timestampToTime = (timestamp: string) => {
-  if (timestamp === '') return ''
-
-  const format = 'HH.mm DD.MM.YYYY'
-
-  return moment
-    .unix(parseInt(timestamp))
-    .subtract(2, 'hour')
-    .format(format)
+// ==========================================================
+export const unixTimeToSting = (unix: number) => {
+  var a = new Date(unix)
+  var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+  var time = a.getHours() + ':' + a.getMinutes()
+  var date = a.getDate() + '. ' + months[a.getMonth()] + ' ' + a.getFullYear()
+  return time + '     ' + date
 }
