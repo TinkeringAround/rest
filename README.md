@@ -1,22 +1,17 @@
 # Monitoring App
 
-## Features
+## TODO
 
-- Table bauen
-- Add, Delete Server
-
-## Sonstiges
-
-- Backend Testing
+- Backend Testing -> Routes
 - Frontend Testing
+  - Table -> valid Servers, Empty Servers, Delete one Server then one less
+  - Error -> Error Dialog visible, Click then Close
 
-# Time
+# Time Tracking
 
-1. Sonntag: 5h (Backend - Features + Containerization)
-2. Montag: 8 Uhr - 12 Uhr
-
-# Not Added Features and Optimizations
-
-## Frontend
-
-- Mobile Support
+| Feature/Component    | Duration |
+| -------------------- | -------- |
+| Spring Boot REST API | 5h       |
+| React Frontend       | 8h       |
+| Containerization     | 1h       |
+| Testing              | x        |

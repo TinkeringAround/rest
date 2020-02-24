@@ -1,5 +1,5 @@
 import React, { FC, useContext } from 'react'
-import { Box } from 'grommet'
+import { Box, Heading } from 'grommet'
 
 // Types
 import { TServer } from '../../Types'
@@ -18,7 +18,7 @@ const ReportsTable: FC = () => {
   return (
     <Box width="90%" margin="2rem 0 0" pad="0 2rem">
       {/* Header */}
-      <TableHeader />
+      {servers.length > 0 && <TableHeader />}
 
       {/* Rows */}
       {servers.length > 0 &&
@@ -29,6 +29,15 @@ const ReportsTable: FC = () => {
             deleteServer={(server: TServer) => deleteServer(server.id)}
           />
         ))}
+
+      {/* No Servers  */}
+      {servers.length === 0 && (
+        <Box height="100%" width="100%" justify="center" align="center">
+          <Heading color="medium" size="1.75rem" textAlign="center">
+            No Servers configured. Add a Server.
+          </Heading>
+        </Box>
+      )}
     </Box>
   )
 }

@@ -1,0 +1,16 @@
+Hintergrund/Zielsetzung:
+Es soll eine Monitoring-App implementiert werden.
+
+
+Funktionale Anforderung:
+Die Anwendung soll in regelm��igen Abst�nden eine Liste der Server-URLs pr�fen. Als Ergebnis soll eine zweispaltige Tabelle dargestellt werden.
+In der ersten Spalte soll der Server-Name und in der zweiten Spalte das Ergebins der Pr�fung angezeigt werden.
+
+
+Technische Hinweise:
+Gew�nscht ist eine einfache WebAnwendung, es kann aber auch eine Desktop-Anwendung (z.B. Swing) oder eine Consolen-Anwendung sein.
+
+- Das Frontend-Framework kann frei gew�hlt werden
+- Der serverseitige Anteil (im Falle einer WebAnwendung) sollte mit Java umgesetzt werden
+- Eigene Anspr�che an die Code-Qualit�t sind zu ber�cksichtigen
+- Bei der Wahl zu benutzender Klassen und Bibliotheken: feel free.

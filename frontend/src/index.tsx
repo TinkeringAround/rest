@@ -1,6 +1,6 @@
 import React, { FC, useState, useCallback, useEffect } from 'react'
 import ReactDOM from 'react-dom'
-import { Grommet, Box, Heading, Keyboard } from 'grommet'
+import { Grommet, Box } from 'grommet'
 import { CircleSpinner } from 'react-spinners-kit'
 
 // Driver
@@ -19,12 +19,9 @@ import { AppContext } from './Contexts'
 // Libraries
 import { getServers, addNewServer, deleteExistingServer } from './Library/api'
 
-// Atoms
-import { SInput } from './Atoms/styled'
-import IconButton from './Atoms/iconButton'
-
 // Components
 import Layout from './Components/Layout'
+import AddServerRow from './Components/AddServerRow'
 import Table from './Components/Table'
 import ErrorDialog from './Components/ErrorDialog'
 
@@ -35,7 +32,6 @@ const App: FC = () => {
   const [refreshInterval, setRefreshInterval] = useState<number>(60000)
   const [interval, setIvl] = useState<number | null>(null)
   const [error, setError] = useState<string | null>(null)
-  const [newUrl, setNewUrl] = useState<string>('')
 
   // ===============================================
   const reload = useCallback((silent: boolean = true) => {
@@ -60,13 +56,6 @@ const App: FC = () => {
       .then(() => reload())
       .catch(error => setError(error))
   }, [])
-
-  const newServerHandler = useCallback(() => {
-    if (newUrl !== '') {
-      addServer(newUrl)
-      setNewUrl('')
-    }
-  }, [newUrl, setNewUrl, addServer])
 
   useEffect(() => {
     if (servers.length === 0) reload(false)
@@ -100,43 +89,10 @@ const App: FC = () => {
           )}
 
           {/* Add Server Row */}
-          {!loading && (
-            <Keyboard onEnter={newServerHandler}>
-              <Box
-                width="90%"
-                background="light"
-                direction="row"
-                margin="2rem 0 3rem"
-                pad="0.5rem 1rem"
-                align="center"
-                style={{ borderRadius: 5 }}
-              >
-                <IconButton
-                  iconType="plus"
-                  wrapper="2.5rem"
-                  onClick={newServerHandler}
-                  margin="0 1rem 0 0"
-                />
-                <SInput
-                  value={newUrl}
-                  onChange={event => setNewUrl(event.target.value)}
-                  placeholder="Enter New URL"
-                />
-              </Box>
-            </Keyboard>
-          )}
+          {!loading && <AddServerRow addServer={addServer} />}
 
           {/* Table */}
-          {!loading && servers.length > 0 && <Table />}
-
-          {/* No Servers after Loading */}
-          {!loading && !error && servers.length === 0 && (
-            <Box height="100%" width="100%" justify="center" align="center">
-              <Heading color="medium" size="1.75rem" textAlign="center">
-                No Servers configured. Add a Server.
-              </Heading>
-            </Box>
-          )}
+          {!loading && <Table />}
 
           {/* Error */}
           <ErrorDialog error={error} close={() => setError(null)} />
