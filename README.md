@@ -3,10 +3,7 @@
 ## Features
 
 - Table bauen
-- Fetch Servers
-- Reload Function
-- Settings Reload Interval
-- Add, Delte Server
+- Add, Delete Server
 - Timestamp überprüfen
 
 ## Sonstiges
@@ -18,3 +15,9 @@
 
 1. Sonntag: 5h (Backend - Features + Containerization)
 2. Montag: 8 Uhr - 12 Uhr
+
+# Not Added Features and Optimizations
+
+## Frontend
+
+- Mobile Support

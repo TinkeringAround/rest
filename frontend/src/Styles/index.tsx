@@ -8,8 +8,9 @@ export const colors = {
   black: '#000',
 
   // Colors
-  lightYellow: '#FFE7AF',
-  yellow: '#F4BC3A'
+  yellow: '#F4BC3A',
+  green: '#06D6A0',
+  red: '#EF476F'
 }
 
 // ===============================================

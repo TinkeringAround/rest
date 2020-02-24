@@ -16,4 +16,8 @@ export type TServer = {
 }
 
 // ===============================================
-export type TRefreshInterval = 'Every Minute' | 'Every 5 Minutes' | 'Every 10 Minutes'
+export type TRefreshInterval =
+  | 'Every Minute'
+  | 'Every 5 Minutes'
+  | 'Every 10 Minutes'
+  | 'Every 15 Minutes'
