@@ -18,16 +18,16 @@ interface Props {
 // ===============================================
 const Overlay: FC<Props> = ({ open, close, children }) => (
   <Portal>
-    <Grommet theme={theme}>
+    <Grommet theme={theme} id="overlay">
       <PoseGroup preEnterPose="exit">
         {open && (
-          <AOverlay key="Dialog-Overlay">
+          <AOverlay key="overlay">
             <Box width="90%" height="90%" margin="0" style={{ position: 'relative' }}>
               {children}
             </Box>
           </AOverlay>
         )}
-        {open && <ASimple key="Dialog-Overlay-Background" onClick={close} />}
+        {open && <ASimple key="overlay-background" onClick={close} id="overlay-background" />}
       </PoseGroup>
     </Grommet>
   </Portal>

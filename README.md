@@ -2,6 +2,7 @@
 
 ## TODO
 
+- Add Manual to README
 - Backend Testing -> Routes
 - Frontend Testing
   - Table -> valid Servers, Empty Servers, Delete one Server then one less

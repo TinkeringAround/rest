@@ -1,46 +1,55 @@
-// package com.example.rest;
+package com.example.rest;
 
-// import org.junit.jupiter.api.BeforeAll;
-// import org.junit.jupiter.api.DisplayName;
-// import org.junit.jupiter.api.Test;
-// import org.mockito.InjectMocks;
-// import org.springframework.beans.factory.annotation.Autowired;
-// import org.springframework.boot.test.autoconfigure.data.mongo.DataMongoTest;
-// import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-// import org.springframework.boot.test.mock.mockito.MockBean;
-// import org.springframework.data.mongodb.core.MongoTemplate;
-// import org.springframework.test.web.servlet.MockMvc;
-// import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-// import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
-// import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import java.util.List;
+import java.util.UUID;
 
-// // ===================================================
-// @DisplayName("Server Controller Test")
-// @DataMongoTest
-// class ServerControllerTest {
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.data.mongo.DataMongoTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.http.MediaType;
+import org.springframework.test.web.servlet.MockMvc;
 
-// @Autowired
-// private MockMvc mock;
+import static org.hamcrest.Matchers.hasSize;
+import static org.mockito.BDDMockito.given;
+import static org.hamcrest.Matchers.is;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-// @MockBean
-// private ServerRepository repository;
+// ===================================================
+@DisplayName("Server Controller Test")
+@DataMongoTest
+class ServerControllerTest {
 
-// @InjectMocks
-// private ServerController api;
+    @Autowired
+    private MockMvc mvc;
 
-// // ===================================================
-// @BeforeAll
-// public void setUp(@Autowired MongoTemplate mongoTemplate) throws Exception {
-// // mock = MockMvcBuilders.standaloneSetup(api).build();
+    @MockBean
+    private ServerRepository repository;
 
-// // mock.perform(MockMvcRequestBuilders.post(urlTemplate, uriVars))
-// }
+    private Server ServerOne;
+    private Server ServerTwo;
 
-// @Test
-// @DisplayName("200 OK: /servers route")
-// void testServersRoute(@Autowired MongoTemplate mongoTemplate) throws
-// Exception {
-// //
-// mock.perform(MockMvcRequestBuilders.get("/servers")).andExpect(MockMvcResultMatchers.status().isOk());
-// }
-// }
+    // ===================================================
+    @BeforeAll
+    public void setup() {
+        ServerOne = new Server(UUID.randomUUID(), "tinkeringaround.de");
+        ServerTwo = new Server(UUID.randomUUID(), "wuyou.de");
+    }
+
+    // TODO: Implement Test Cases
+    @Test
+    @DisplayName("200 OK: /servers route")
+    void testServersRoute(@Autowired MongoTemplate mongoTemplate) throws Exception {
+        List<Server> servers = List.of(ServerOne, ServerTwo);
+        given(repository.findAll()).willReturn(servers);
+
+        mvc.perform(get("/servers").contentType(MediaType.APPLICATION_JSON)).andExpect(status().isOk())
+                .andExpect(jsonPath("$", hasSize(2))).andExpect(jsonPath("$[0].url", is("Hallo")));
+
+    }
+}

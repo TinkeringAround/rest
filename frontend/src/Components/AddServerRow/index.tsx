@@ -1,17 +1,16 @@
-import React, { FC, useCallback, useState } from 'react'
+import React, { FC, useCallback, useState, useContext } from 'react'
 import { Keyboard, Box } from 'grommet'
+
+// Contexts
+import { AppContext } from '../../Contexts'
 
 // Atoms
 import IconButton from '../../Atoms/iconButton'
 import { SInput } from '../../Atoms/styled'
 
 // ===============================================
-interface Props {
-  addServer: (url: string) => void
-}
-
-// ===============================================
-const AddServerRow: FC<Props> = ({ addServer }) => {
+const AddServerRow: FC = () => {
+  const { addServer } = useContext(AppContext)
   const [newUrl, setNewUrl] = useState<string>('')
 
   const addServerHandler = useCallback(() => {

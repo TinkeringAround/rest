@@ -36,10 +36,9 @@ const App: FC = () => {
   // ===============================================
   const reload = useCallback((silent: boolean = true) => {
     if (!silent) setLoading(true)
-
     getServers()
       .then(response => setServers(response.data))
-      .catch(error => setError(error))
+      .catch(error => setError(error.toString()))
       .finally(() => {
         if (!silent) setLoading(false)
       })
@@ -48,13 +47,13 @@ const App: FC = () => {
   const addServer = useCallback((url: string) => {
     addNewServer(url)
       .then(() => reload(false))
-      .catch(error => setError(error))
+      .catch(error => setError(error.toString()))
   }, [])
 
   const deleteServer = useCallback((id: string) => {
     deleteExistingServer(id)
       .then(() => reload())
-      .catch(error => setError(error))
+      .catch(error => setError(error.toString()))
   }, [])
 
   useEffect(() => {
@@ -89,7 +88,7 @@ const App: FC = () => {
           )}
 
           {/* Add Server Row */}
-          {!loading && <AddServerRow addServer={addServer} />}
+          {!loading && <AddServerRow />}
 
           {/* Table */}
           {!loading && <Table />}
