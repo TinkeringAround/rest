@@ -18,7 +18,7 @@ interface Props {
 // ===============================================
 const Overlay: FC<Props> = ({ open, close, children }) => (
   <Portal>
-    <Grommet theme={theme} id="overlay">
+    <Grommet theme={theme}>
       <PoseGroup preEnterPose="exit">
         {open && (
           <AOverlay key="overlay">
@@ -27,7 +27,9 @@ const Overlay: FC<Props> = ({ open, close, children }) => (
             </Box>
           </AOverlay>
         )}
-        {open && <ASimple key="overlay-background" onClick={close} id="overlay-background" />}
+        {open && (
+          <ASimple key="overlay-background" onClick={close} data-testid="overlay-background" />
+        )}
       </PoseGroup>
     </Grommet>
   </Portal>

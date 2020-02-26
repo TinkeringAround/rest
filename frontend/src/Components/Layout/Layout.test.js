@@ -12,6 +12,7 @@ afterEach(cleanup)
 
 // ===================================================================
 test('Layout is rendered with green Navigation = Positive', () => {
+  // Arrange
   const { container, getByText } = render(
     <AppContext.Provider
       value={{
@@ -24,15 +25,14 @@ test('Layout is rendered with green Navigation = Positive', () => {
     </AppContext.Provider>
   )
 
-  expect(container).toBeVisible()
-
-  const appTitle = getByText('Monitoring-App')
-  expect(appTitle).toBeInTheDocument()
-  expect(appTitle.parentElement).toHaveStyle('background: green')
+  // Assert
+  expect(container).toBeInTheDocument()
+  expect(getByText('Monitoring-App').parentElement).toHaveStyle('background: green')
 })
 
 test('Layout is rendered with red Navigation = Error', () => {
-  const { container, getByText } = render(
+  // Arrange
+  const { getByText } = render(
     <AppContext.Provider
       value={{
         isLoading: false,
@@ -44,12 +44,12 @@ test('Layout is rendered with red Navigation = Error', () => {
     </AppContext.Provider>
   )
 
-  const appTitle = getByText('Monitoring-App')
-  expect(appTitle.parentElement).toHaveStyle('background: red')
+  // Assert
+  expect(getByText('Monitoring-App').parentElement).toHaveStyle('background: red')
 })
 
 test('Layout is rendered with yellow Navigation = Loading', () => {
-  const { container, getByText } = render(
+  const { getByText } = render(
     <AppContext.Provider
       value={{
         isLoading: true,
@@ -61,6 +61,5 @@ test('Layout is rendered with yellow Navigation = Loading', () => {
     </AppContext.Provider>
   )
 
-  const appTitle = getByText('Monitoring-App')
-  expect(appTitle.parentElement).toHaveStyle('background: yellow')
+  expect(getByText('Monitoring-App').parentElement).toHaveStyle('background: yellow')
 })

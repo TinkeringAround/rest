@@ -9,7 +9,7 @@ import { TServer } from '../../../Types'
 import { colors } from '../../../Styles'
 
 // Utility
-import { unixTimeToSting } from '../../../Utility'
+import { unixTimeToString } from '../../../Utility'
 
 // Atoms
 import IconButton from '../../../Atoms/iconButton'
@@ -53,7 +53,7 @@ const ReportsTableRow: FC<Props> = ({ server, deleteServer }) => (
     {/* Last Updated */}
     <Box width={sizes[1]}>
       <Text size="0.7rem" weight="bold" color={colors['dark']}>
-        {unixTimeToSting(server.lastUpdated)}
+        {unixTimeToString(server.lastUpdated)}
       </Text>
     </Box>
 

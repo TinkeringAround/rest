@@ -17,35 +17,40 @@ const appContext = {
 afterEach(cleanup)
 
 // ===================================================================
-test('AddServerRow is renderer with input and button present', () => {
-  const { container, getByRole } = render(
+test('AddServerRow is renderer with input and button', () => {
+  // Arrange
+  const { container, getByRole, getByTitle } = render(
     <AppContext.Provider value={appContext}>
-      <AddServerRow />
+      <AddServerRow addServer={addServerMock} />
     </AppContext.Provider>
   )
 
+  // Assert
   expect(container).toBeVisible()
-
-  const input = getByRole('textbox')
-  expect(input).toBeInTheDocument()
-
-  const buttons = Array.from(document.getElementsByTagName('svg'))
-  expect(buttons.length).toBe(1)
+  expect(getByRole('textbox')).toBeInTheDocument()
+  expect(getByTitle('Plus')).toBeInTheDocument()
 })
 
 test('Typing in Input, Pressing Button', () => {
-  const { getByRole } = render(
+  // Arrange
+  const { getByRole, getByTitle } = render(
     <AppContext.Provider value={appContext}>
-      <AddServerRow />
+      <AddServerRow addServer={addServerMock} />
     </AppContext.Provider>
   )
 
   const url = 'tinkeringaround.de'
+  const emptyURL = ''
 
   const input = getByRole('textbox')
-  input.setAttribute('value', url)
-  expect(input).toHaveAttribute('value', url)
 
-  const buttons = Array.from(document.getElementsByTagName('svg'))
-  fireEvent.click(buttons[0].parentElement)
+  // Act & Assert
+  fireEvent.input(input, { target: { value: emptyURL } })
+  expect(input).toHaveAttribute('value', emptyURL)
+  expect(addServerMock).not.toHaveBeenCalled()
+
+  fireEvent.input(input, { target: { value: url } })
+  expect(input).toHaveAttribute('value', url)
+  fireEvent.click(getByTitle('Plus'))
+  expect(addServerMock).toHaveBeenCalledTimes(1)
 })
